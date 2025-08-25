@@ -1,18 +1,17 @@
-use cairo_vm::{
+use cairo_vm_base::{cairo_type::CairoType, vm::cairo_vm::{
     types::relocatable::{MaybeRelocatable, Relocatable},
     vm::{errors::hint_errors::HintError, vm_core::VirtualMachine},
     Felt252,
-};
+}};
+use cairo_vm_base::types::{uint384::UInt384};
 use num_bigint::BigUint;
 use num_traits::{One, Zero};
 use pyo3::{types::PyList, PyAny};
-
 use crate::error::GaragaZeroError;
 
-#[derive(Debug, Clone)]
-pub struct UInt384(pub BigUint);
+pub struct UInt384Py(pub UInt384);
 
-impl UInt384 {
+impl UInt384Py {
     pub fn from_python_list(py_list: &PyAny) -> Result<Self, HintError> {
         // Convert PyAny to PyList
         let py_list = py_list.downcast::<PyList>().unwrap();
@@ -49,51 +48,24 @@ impl UInt384 {
         value += BigUint::from(d1_val) << 96;
         value += BigUint::from(d0_val);
 
-        Ok(Self(value))
+        Ok(Self(UInt384(value)))
     }
 
     pub fn to_bytes(&self) -> Vec<u8> {
-        self.0.to_bytes_be()
+        self.0.0.to_bytes_be()
     }
 
     pub fn to_limbs(&self) -> [Vec<u8>; 4] {
         let mask = BigUint::from(2u128).pow(96) - BigUint::one();
 
-        let d0: BigUint = &self.0 & &mask;
-        let d1: BigUint = (&self.0 >> 96) & &mask;
-        let d2: BigUint = (&self.0 >> 192) & &mask;
-        let d3: BigUint = (&self.0 >> 288) & &mask;
+        let d0: BigUint = &self.0.0 & &mask;
+        let d1: BigUint = (&self.0.0 >> 96) & &mask;
+        let d2: BigUint = (&self.0.0 >> 192) & &mask;
+        let d3: BigUint = (&self.0.0 >> 288) & &mask;
 
         [d0.to_bytes_be(), d1.to_bytes_be(), d2.to_bytes_be(), d3.to_bytes_be()]
     }
 }
-
-impl CairoType for UInt384 {
-    fn from_memory(vm: &VirtualMachine, address: Relocatable) -> Result<Self, HintError> {
-        let d0 = BigUint::from_bytes_be(&vm.get_integer((address + 0)?)?.to_bytes_be());
-        let d1 = BigUint::from_bytes_be(&vm.get_integer((address + 1)?)?.to_bytes_be());
-        let d2 = BigUint::from_bytes_be(&vm.get_integer((address + 2)?)?.to_bytes_be());
-        let d3 = BigUint::from_bytes_be(&vm.get_integer((address + 3)?)?.to_bytes_be());
-        let bigint = d3 << 288 | d2 << 192 | d1 << 96 | d0;
-        Ok(Self(bigint))
-    }
-
-    fn to_memory(&self, vm: &mut VirtualMachine, address: Relocatable) -> Result<Relocatable, HintError> {
-        let limbs = self.to_limbs();
-
-        vm.insert_value((address + 0)?, Felt252::from_bytes_be_slice(&limbs[0]))?;
-        vm.insert_value((address + 1)?, Felt252::from_bytes_be_slice(&limbs[1]))?;
-        vm.insert_value((address + 2)?, Felt252::from_bytes_be_slice(&limbs[2]))?;
-        vm.insert_value((address + 3)?, Felt252::from_bytes_be_slice(&limbs[3]))?;
-
-        Ok((address + 4)?)
-    }
-
-    fn n_fields() -> usize {
-        4
-    }
-}
-
 #[derive(Debug, Clone)]
 pub struct ModuloCircuit {
     pub constants_ptr: Relocatable,
@@ -223,10 +195,4 @@ impl CairoType for ExtensionFieldModuloCircuit {
     fn n_fields() -> usize {
         17
     }
-}
-
-pub trait CairoType: Sized {
-    fn from_memory(vm: &VirtualMachine, address: Relocatable) -> Result<Self, HintError>;
-    fn to_memory(&self, vm: &mut VirtualMachine, address: Relocatable) -> Result<Relocatable, HintError>;
-    fn n_fields() -> usize;
 }

@@ -1,15 +1,15 @@
 use std::collections::HashMap;
 
-use cairo_vm::{
+use cairo_vm_base::{types::uint384::UInt384, vm::cairo_vm::{
     hint_processor::builtin_hint_processor::{builtin_hint_processor_definition::HintProcessorData, hint_utils::get_ptr_from_var_name},
     types::{exec_scope::ExecutionScopes, relocatable::Relocatable},
     vm::{errors::hint_errors::HintError, vm_core::VirtualMachine},
     Felt252,
-};
+}};
+use cairo_vm_base::cairo_type::CairoType;
 use pyo3::prelude::*;
 
-use super::types::{CairoType, ModuloCircuit, UInt384};
-use crate::{error::GaragaZeroError, types::ExtensionFieldModuloCircuit};
+use crate::{error::GaragaZeroError, types::{ExtensionFieldModuloCircuit, ModuloCircuit}};
 
 pub const HINT_RUN_MODULO_CIRCUIT: &str = r#"from garaga.hints.io import pack_bigint_ptr, fill_felt_ptr
 from hints.python_wrapper.circuits import run_modulo_circuit_hints
@@ -126,7 +126,7 @@ pub fn compute_mod_circuit(
         let py_input = circuit_input
             .iter()
             .map(|uint384| -> PyResult<PyObject> {
-                let bytes = uint384.to_bytes();
+                let bytes = uint384.0.to_bytes_be();
                 let py_int = py.eval(&format!("int.from_bytes({:?}, 'big')", bytes), None, None)?;
 
                 Ok(py_int.into())
@@ -187,7 +187,7 @@ pub fn compute_extension_field_mod_circuit(
         let py_input = circuit_input
             .iter()
             .map(|uint384| -> PyResult<PyObject> {
-                let bytes = uint384.to_bytes();
+                let bytes = uint384.0.to_bytes_be();
                 let py_int = py.eval(&format!("int.from_bytes({:?}, 'big')", bytes), None, None)?;
 
                 Ok(py_int.into())

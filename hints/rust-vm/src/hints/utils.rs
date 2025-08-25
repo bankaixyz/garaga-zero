@@ -1,6 +1,6 @@
 use std::{cmp::Ordering, collections::HashMap};
 
-use cairo_vm::{
+use cairo_vm_base::{types::uint384::UInt384, vm::cairo_vm::{
     hint_processor::builtin_hint_processor::{
         builtin_hint_processor_definition::HintProcessorData,
         hint_utils::{get_integer_from_var_name, get_ptr_from_var_name, insert_value_into_ap},
@@ -8,10 +8,11 @@ use cairo_vm::{
     types::{exec_scope::ExecutionScopes, relocatable::Relocatable},
     vm::{errors::hint_errors::HintError, vm_core::VirtualMachine},
     Felt252,
-};
-use num_bigint::BigUint;
+}};
+use cairo_vm_base::cairo_type::BaseCairoType;
 
-use crate::types::UInt384;
+use crate::types::UInt384Py;
+
 
 pub fn print_address_range(vm: &VirtualMachine, address: Relocatable, depth: usize, padding: Option<usize>) {
     let padding = padding.unwrap_or(0); // Default to 20 if not specified
@@ -131,7 +132,8 @@ pub fn hint_write_felts_to_value_segment_3(
     let values_start = get_ptr_from_var_name("values_start", vm, &hint_data.ids_data, &hint_data.ap_tracking)?;
     let value = vm.get_integer((values_start + (i - 1))?)?;
 
-    let limbs = UInt384(BigUint::from_bytes_be(&value.to_bytes_be()))
+    let limbs = UInt384Py(UInt384::
+        from_bytes_be(&value.to_bytes_be()))
         .to_limbs()
         .map(|limb| Felt252::from_bytes_be_slice(&limb));
 

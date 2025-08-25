@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use cairo_vm::{
+use cairo_vm_base::{types::uint384::UInt384, vm::cairo_vm::{
     hint_processor::builtin_hint_processor::{
         builtin_hint_processor_definition::HintProcessorData,
         hint_utils::{get_ptr_from_var_name, get_relocatable_from_var_name, insert_value_into_ap},
@@ -8,10 +8,9 @@ use cairo_vm::{
     types::exec_scope::ExecutionScopes,
     vm::{errors::hint_errors::HintError, vm_core::VirtualMachine},
     Felt252,
-};
+}};
+use cairo_vm_base::cairo_type::CairoType;
 use num_bigint::BigUint;
-
-use super::types::{CairoType, UInt384};
 
 pub const HINT_UINT384_IS_LE: &str = r#"from garaga.hints.io import bigint_pack
 a = bigint_pack(ids.a, 4, 2**96)

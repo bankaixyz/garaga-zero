@@ -2,17 +2,17 @@ use std::{collections::HashMap, str::FromStr};
 
 use ark_bls12_381::{Fq as Bls12_381Fq, Fq2 as Bls12_381Fq2};
 use ark_ff::Field;
-use cairo_vm::{
+use cairo_vm_base::{types::uint384::UInt384, vm::cairo_vm::{
     hint_processor::builtin_hint_processor::{
         builtin_hint_processor_definition::HintProcessorData, hint_utils::get_relocatable_from_var_name,
     },
     types::exec_scope::ExecutionScopes,
     vm::{errors::hint_errors::HintError, vm_core::VirtualMachine},
     Felt252,
-};
+}};
 use num_bigint::BigUint;
+use cairo_vm_base::cairo_type::CairoType;
 
-use super::types::{CairoType, UInt384};
 use crate::error::GaragaZeroError;
 
 pub const HINT_MAP_TO_CURVE_G2: &str = r#"from garaga.hints.io import bigint_pack
