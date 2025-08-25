@@ -787,41 +787,41 @@ func get_EVAL_FN_CHALLENGE_DUPL_1P_circuit(curve_id: felt) -> (circuit: ModuloCi
     dw 168;
     dw 172;
     dw 24;  // Eval sumdlogdiv_a_num Horner step: add coefficient_0
-    dw 176;
     dw 180;
-    dw 36;  // Eval sumdlogdiv_a_den Horner step: add coefficient_1
     dw 184;
+    dw 36;  // Eval sumdlogdiv_a_den Horner step: add coefficient_1
     dw 188;
-    dw 32;  // Eval sumdlogdiv_a_den Horner step: add coefficient_0
     dw 192;
+    dw 32;  // Eval sumdlogdiv_a_den Horner step: add coefficient_0
     dw 196;
+    dw 200;
     dw 48;  // Eval sumdlogdiv_b_num Horner step: add coefficient_1
-    dw 204;
     dw 208;
-    dw 44;  // Eval sumdlogdiv_b_num Horner step: add coefficient_0
     dw 212;
+    dw 44;  // Eval sumdlogdiv_b_num Horner step: add coefficient_0
     dw 216;
-    dw 72;  // Eval sumdlogdiv_b_den Horner step: add coefficient_4
     dw 220;
+    dw 72;  // Eval sumdlogdiv_b_den Horner step: add coefficient_4
     dw 224;
-    dw 68;  // Eval sumdlogdiv_b_den Horner step: add coefficient_3
     dw 228;
+    dw 68;  // Eval sumdlogdiv_b_den Horner step: add coefficient_3
     dw 232;
-    dw 64;  // Eval sumdlogdiv_b_den Horner step: add coefficient_2
     dw 236;
+    dw 64;  // Eval sumdlogdiv_b_den Horner step: add coefficient_2
     dw 240;
-    dw 60;  // Eval sumdlogdiv_b_den Horner step: add coefficient_1
     dw 244;
+    dw 60;  // Eval sumdlogdiv_b_den Horner step: add coefficient_1
     dw 248;
-    dw 56;  // Eval sumdlogdiv_b_den Horner step: add coefficient_0
     dw 252;
+    dw 56;  // Eval sumdlogdiv_b_den Horner step: add coefficient_0
     dw 256;
-    dw 200;  // None
-    dw 264;
+    dw 260;
+    dw 204;  // None
     dw 268;
+    dw 272;
     dw 276;  // None
     dw 280;
-    dw 272;
+    dw 176;
 
     mul_offsets_ptr_loc:
     dw 28;  // Eval sumdlogdiv_a_num Horner step: multiply by xA0
@@ -863,50 +863,50 @@ func get_EVAL_FN_CHALLENGE_DUPL_1P_circuit(curve_id: felt) -> (circuit: ModuloCi
     dw 4;  // None
     dw 164;
     dw 168;
-    dw 28;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
-    dw 8;
-    dw 176;
-    dw 40;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
-    dw 8;
-    dw 184;
-    dw 188;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
-    dw 8;
-    dw 192;
-    dw 196;  // None
-    dw 200;
-    dw 180;
-    dw 52;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
-    dw 8;
-    dw 204;
-    dw 208;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
-    dw 8;
-    dw 212;
-    dw 76;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 220;
-    dw 224;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 228;
-    dw 232;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 236;
-    dw 240;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 244;
-    dw 248;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 252;
-    dw 256;  // None
-    dw 260;
-    dw 216;
-    dw 12;  // None
-    dw 260;
-    dw 264;
     dw 16;  // None
     dw 172;
-    dw 272;
-    dw 20;  // None
+    dw 176;
+    dw 28;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
+    dw 8;
+    dw 180;
+    dw 40;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
+    dw 8;
+    dw 188;
+    dw 192;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
+    dw 8;
+    dw 196;
+    dw 200;  // None
+    dw 204;
+    dw 184;
+    dw 52;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
+    dw 8;
+    dw 208;
+    dw 212;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
+    dw 8;
+    dw 216;
+    dw 76;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 224;
+    dw 228;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 232;
+    dw 236;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 240;
+    dw 244;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 248;
+    dw 252;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 256;
+    dw 260;  // None
+    dw 264;
+    dw 220;
+    dw 12;  // None
+    dw 264;
     dw 268;
+    dw 20;  // None
+    dw 272;
     dw 276;
 
     output_offsets_ptr_loc:
@@ -997,53 +997,53 @@ func get_EVAL_FN_CHALLENGE_DUPL_2P_circuit(curve_id: felt) -> (circuit: ModuloCi
     dw 216;
     dw 220;
     dw 28;  // Eval sumdlogdiv_a_num Horner step: add coefficient_1
-    dw 224;
     dw 228;
-    dw 24;  // Eval sumdlogdiv_a_num Horner step: add coefficient_0
     dw 232;
+    dw 24;  // Eval sumdlogdiv_a_num Horner step: add coefficient_0
     dw 236;
-    dw 44;  // Eval sumdlogdiv_a_den Horner step: add coefficient_2
     dw 240;
+    dw 44;  // Eval sumdlogdiv_a_den Horner step: add coefficient_2
     dw 244;
-    dw 40;  // Eval sumdlogdiv_a_den Horner step: add coefficient_1
     dw 248;
+    dw 40;  // Eval sumdlogdiv_a_den Horner step: add coefficient_1
     dw 252;
-    dw 36;  // Eval sumdlogdiv_a_den Horner step: add coefficient_0
     dw 256;
+    dw 36;  // Eval sumdlogdiv_a_den Horner step: add coefficient_0
     dw 260;
+    dw 264;
     dw 60;  // Eval sumdlogdiv_b_num Horner step: add coefficient_2
-    dw 268;
     dw 272;
-    dw 56;  // Eval sumdlogdiv_b_num Horner step: add coefficient_1
     dw 276;
+    dw 56;  // Eval sumdlogdiv_b_num Horner step: add coefficient_1
     dw 280;
-    dw 52;  // Eval sumdlogdiv_b_num Horner step: add coefficient_0
     dw 284;
+    dw 52;  // Eval sumdlogdiv_b_num Horner step: add coefficient_0
     dw 288;
-    dw 88;  // Eval sumdlogdiv_b_den Horner step: add coefficient_5
     dw 292;
+    dw 88;  // Eval sumdlogdiv_b_den Horner step: add coefficient_5
     dw 296;
-    dw 84;  // Eval sumdlogdiv_b_den Horner step: add coefficient_4
     dw 300;
+    dw 84;  // Eval sumdlogdiv_b_den Horner step: add coefficient_4
     dw 304;
-    dw 80;  // Eval sumdlogdiv_b_den Horner step: add coefficient_3
     dw 308;
+    dw 80;  // Eval sumdlogdiv_b_den Horner step: add coefficient_3
     dw 312;
-    dw 76;  // Eval sumdlogdiv_b_den Horner step: add coefficient_2
     dw 316;
+    dw 76;  // Eval sumdlogdiv_b_den Horner step: add coefficient_2
     dw 320;
-    dw 72;  // Eval sumdlogdiv_b_den Horner step: add coefficient_1
     dw 324;
+    dw 72;  // Eval sumdlogdiv_b_den Horner step: add coefficient_1
     dw 328;
-    dw 68;  // Eval sumdlogdiv_b_den Horner step: add coefficient_0
     dw 332;
+    dw 68;  // Eval sumdlogdiv_b_den Horner step: add coefficient_0
     dw 336;
-    dw 264;  // None
-    dw 344;
+    dw 340;
+    dw 268;  // None
     dw 348;
+    dw 352;
     dw 356;  // None
     dw 360;
-    dw 352;
+    dw 224;
 
     mul_offsets_ptr_loc:
     dw 32;  // Eval sumdlogdiv_a_num Horner step: multiply by xA0
@@ -1097,62 +1097,62 @@ func get_EVAL_FN_CHALLENGE_DUPL_2P_circuit(curve_id: felt) -> (circuit: ModuloCi
     dw 4;  // None
     dw 212;
     dw 216;
-    dw 32;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
-    dw 8;
-    dw 224;
-    dw 228;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
-    dw 8;
-    dw 232;
-    dw 48;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
-    dw 8;
-    dw 240;
-    dw 244;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
-    dw 8;
-    dw 248;
-    dw 252;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
-    dw 8;
-    dw 256;
-    dw 260;  // None
-    dw 264;
-    dw 236;
-    dw 64;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
-    dw 8;
-    dw 268;
-    dw 272;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
-    dw 8;
-    dw 276;
-    dw 280;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
-    dw 8;
-    dw 284;
-    dw 92;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 292;
-    dw 296;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 300;
-    dw 304;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 308;
-    dw 312;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 316;
-    dw 320;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 324;
-    dw 328;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 332;
-    dw 336;  // None
-    dw 340;
-    dw 288;
-    dw 12;  // None
-    dw 340;
-    dw 344;
     dw 16;  // None
     dw 220;
-    dw 352;
-    dw 20;  // None
+    dw 224;
+    dw 32;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
+    dw 8;
+    dw 228;
+    dw 232;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
+    dw 8;
+    dw 236;
+    dw 48;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
+    dw 8;
+    dw 244;
+    dw 248;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
+    dw 8;
+    dw 252;
+    dw 256;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
+    dw 8;
+    dw 260;
+    dw 264;  // None
+    dw 268;
+    dw 240;
+    dw 64;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
+    dw 8;
+    dw 272;
+    dw 276;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
+    dw 8;
+    dw 280;
+    dw 284;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
+    dw 8;
+    dw 288;
+    dw 92;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 296;
+    dw 300;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 304;
+    dw 308;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 312;
+    dw 316;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 320;
+    dw 324;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 328;
+    dw 332;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 336;
+    dw 340;  // None
+    dw 344;
+    dw 292;
+    dw 12;  // None
+    dw 344;
     dw 348;
+    dw 20;  // None
+    dw 352;
     dw 356;
 
     output_offsets_ptr_loc:
@@ -1255,65 +1255,65 @@ func get_EVAL_FN_CHALLENGE_DUPL_3P_circuit(curve_id: felt) -> (circuit: ModuloCi
     dw 264;
     dw 268;
     dw 32;  // Eval sumdlogdiv_a_num Horner step: add coefficient_2
-    dw 272;
     dw 276;
-    dw 28;  // Eval sumdlogdiv_a_num Horner step: add coefficient_1
     dw 280;
+    dw 28;  // Eval sumdlogdiv_a_num Horner step: add coefficient_1
     dw 284;
-    dw 24;  // Eval sumdlogdiv_a_num Horner step: add coefficient_0
     dw 288;
+    dw 24;  // Eval sumdlogdiv_a_num Horner step: add coefficient_0
     dw 292;
-    dw 52;  // Eval sumdlogdiv_a_den Horner step: add coefficient_3
     dw 296;
+    dw 52;  // Eval sumdlogdiv_a_den Horner step: add coefficient_3
     dw 300;
-    dw 48;  // Eval sumdlogdiv_a_den Horner step: add coefficient_2
     dw 304;
+    dw 48;  // Eval sumdlogdiv_a_den Horner step: add coefficient_2
     dw 308;
-    dw 44;  // Eval sumdlogdiv_a_den Horner step: add coefficient_1
     dw 312;
+    dw 44;  // Eval sumdlogdiv_a_den Horner step: add coefficient_1
     dw 316;
-    dw 40;  // Eval sumdlogdiv_a_den Horner step: add coefficient_0
     dw 320;
+    dw 40;  // Eval sumdlogdiv_a_den Horner step: add coefficient_0
     dw 324;
+    dw 328;
     dw 72;  // Eval sumdlogdiv_b_num Horner step: add coefficient_3
-    dw 332;
     dw 336;
-    dw 68;  // Eval sumdlogdiv_b_num Horner step: add coefficient_2
     dw 340;
+    dw 68;  // Eval sumdlogdiv_b_num Horner step: add coefficient_2
     dw 344;
-    dw 64;  // Eval sumdlogdiv_b_num Horner step: add coefficient_1
     dw 348;
+    dw 64;  // Eval sumdlogdiv_b_num Horner step: add coefficient_1
     dw 352;
-    dw 60;  // Eval sumdlogdiv_b_num Horner step: add coefficient_0
     dw 356;
+    dw 60;  // Eval sumdlogdiv_b_num Horner step: add coefficient_0
     dw 360;
-    dw 104;  // Eval sumdlogdiv_b_den Horner step: add coefficient_6
     dw 364;
+    dw 104;  // Eval sumdlogdiv_b_den Horner step: add coefficient_6
     dw 368;
-    dw 100;  // Eval sumdlogdiv_b_den Horner step: add coefficient_5
     dw 372;
+    dw 100;  // Eval sumdlogdiv_b_den Horner step: add coefficient_5
     dw 376;
-    dw 96;  // Eval sumdlogdiv_b_den Horner step: add coefficient_4
     dw 380;
+    dw 96;  // Eval sumdlogdiv_b_den Horner step: add coefficient_4
     dw 384;
-    dw 92;  // Eval sumdlogdiv_b_den Horner step: add coefficient_3
     dw 388;
+    dw 92;  // Eval sumdlogdiv_b_den Horner step: add coefficient_3
     dw 392;
-    dw 88;  // Eval sumdlogdiv_b_den Horner step: add coefficient_2
     dw 396;
+    dw 88;  // Eval sumdlogdiv_b_den Horner step: add coefficient_2
     dw 400;
-    dw 84;  // Eval sumdlogdiv_b_den Horner step: add coefficient_1
     dw 404;
+    dw 84;  // Eval sumdlogdiv_b_den Horner step: add coefficient_1
     dw 408;
-    dw 80;  // Eval sumdlogdiv_b_den Horner step: add coefficient_0
     dw 412;
+    dw 80;  // Eval sumdlogdiv_b_den Horner step: add coefficient_0
     dw 416;
-    dw 328;  // None
-    dw 424;
+    dw 420;
+    dw 332;  // None
     dw 428;
+    dw 432;
     dw 436;  // None
     dw 440;
-    dw 432;
+    dw 272;
 
     mul_offsets_ptr_loc:
     dw 36;  // Eval sumdlogdiv_a_num Horner step: multiply by xA0
@@ -1379,74 +1379,74 @@ func get_EVAL_FN_CHALLENGE_DUPL_3P_circuit(curve_id: felt) -> (circuit: ModuloCi
     dw 4;  // None
     dw 260;
     dw 264;
-    dw 36;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
-    dw 8;
-    dw 272;
-    dw 276;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
-    dw 8;
-    dw 280;
-    dw 284;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
-    dw 8;
-    dw 288;
-    dw 56;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
-    dw 8;
-    dw 296;
-    dw 300;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
-    dw 8;
-    dw 304;
-    dw 308;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
-    dw 8;
-    dw 312;
-    dw 316;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
-    dw 8;
-    dw 320;
-    dw 324;  // None
-    dw 328;
-    dw 292;
-    dw 76;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
-    dw 8;
-    dw 332;
-    dw 336;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
-    dw 8;
-    dw 340;
-    dw 344;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
-    dw 8;
-    dw 348;
-    dw 352;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
-    dw 8;
-    dw 356;
-    dw 108;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 364;
-    dw 368;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 372;
-    dw 376;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 380;
-    dw 384;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 388;
-    dw 392;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 396;
-    dw 400;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 404;
-    dw 408;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 412;
-    dw 416;  // None
-    dw 420;
-    dw 360;
-    dw 12;  // None
-    dw 420;
-    dw 424;
     dw 16;  // None
     dw 268;
-    dw 432;
-    dw 20;  // None
+    dw 272;
+    dw 36;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
+    dw 8;
+    dw 276;
+    dw 280;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
+    dw 8;
+    dw 284;
+    dw 288;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
+    dw 8;
+    dw 292;
+    dw 56;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
+    dw 8;
+    dw 300;
+    dw 304;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
+    dw 8;
+    dw 308;
+    dw 312;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
+    dw 8;
+    dw 316;
+    dw 320;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
+    dw 8;
+    dw 324;
+    dw 328;  // None
+    dw 332;
+    dw 296;
+    dw 76;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
+    dw 8;
+    dw 336;
+    dw 340;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
+    dw 8;
+    dw 344;
+    dw 348;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
+    dw 8;
+    dw 352;
+    dw 356;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
+    dw 8;
+    dw 360;
+    dw 108;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 368;
+    dw 372;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 376;
+    dw 380;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 384;
+    dw 388;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 392;
+    dw 396;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 400;
+    dw 404;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 408;
+    dw 412;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 416;
+    dw 420;  // None
+    dw 424;
+    dw 364;
+    dw 12;  // None
+    dw 424;
     dw 428;
+    dw 20;  // None
+    dw 432;
     dw 436;
 
     output_offsets_ptr_loc:
@@ -1561,77 +1561,77 @@ func get_EVAL_FN_CHALLENGE_DUPL_4P_circuit(curve_id: felt) -> (circuit: ModuloCi
     dw 312;
     dw 316;
     dw 36;  // Eval sumdlogdiv_a_num Horner step: add coefficient_3
-    dw 320;
     dw 324;
-    dw 32;  // Eval sumdlogdiv_a_num Horner step: add coefficient_2
     dw 328;
+    dw 32;  // Eval sumdlogdiv_a_num Horner step: add coefficient_2
     dw 332;
-    dw 28;  // Eval sumdlogdiv_a_num Horner step: add coefficient_1
     dw 336;
+    dw 28;  // Eval sumdlogdiv_a_num Horner step: add coefficient_1
     dw 340;
-    dw 24;  // Eval sumdlogdiv_a_num Horner step: add coefficient_0
     dw 344;
+    dw 24;  // Eval sumdlogdiv_a_num Horner step: add coefficient_0
     dw 348;
-    dw 60;  // Eval sumdlogdiv_a_den Horner step: add coefficient_4
     dw 352;
+    dw 60;  // Eval sumdlogdiv_a_den Horner step: add coefficient_4
     dw 356;
-    dw 56;  // Eval sumdlogdiv_a_den Horner step: add coefficient_3
     dw 360;
+    dw 56;  // Eval sumdlogdiv_a_den Horner step: add coefficient_3
     dw 364;
-    dw 52;  // Eval sumdlogdiv_a_den Horner step: add coefficient_2
     dw 368;
+    dw 52;  // Eval sumdlogdiv_a_den Horner step: add coefficient_2
     dw 372;
-    dw 48;  // Eval sumdlogdiv_a_den Horner step: add coefficient_1
     dw 376;
+    dw 48;  // Eval sumdlogdiv_a_den Horner step: add coefficient_1
     dw 380;
-    dw 44;  // Eval sumdlogdiv_a_den Horner step: add coefficient_0
     dw 384;
+    dw 44;  // Eval sumdlogdiv_a_den Horner step: add coefficient_0
     dw 388;
+    dw 392;
     dw 84;  // Eval sumdlogdiv_b_num Horner step: add coefficient_4
-    dw 396;
     dw 400;
-    dw 80;  // Eval sumdlogdiv_b_num Horner step: add coefficient_3
     dw 404;
+    dw 80;  // Eval sumdlogdiv_b_num Horner step: add coefficient_3
     dw 408;
-    dw 76;  // Eval sumdlogdiv_b_num Horner step: add coefficient_2
     dw 412;
+    dw 76;  // Eval sumdlogdiv_b_num Horner step: add coefficient_2
     dw 416;
-    dw 72;  // Eval sumdlogdiv_b_num Horner step: add coefficient_1
     dw 420;
+    dw 72;  // Eval sumdlogdiv_b_num Horner step: add coefficient_1
     dw 424;
-    dw 68;  // Eval sumdlogdiv_b_num Horner step: add coefficient_0
     dw 428;
+    dw 68;  // Eval sumdlogdiv_b_num Horner step: add coefficient_0
     dw 432;
-    dw 120;  // Eval sumdlogdiv_b_den Horner step: add coefficient_7
     dw 436;
+    dw 120;  // Eval sumdlogdiv_b_den Horner step: add coefficient_7
     dw 440;
-    dw 116;  // Eval sumdlogdiv_b_den Horner step: add coefficient_6
     dw 444;
+    dw 116;  // Eval sumdlogdiv_b_den Horner step: add coefficient_6
     dw 448;
-    dw 112;  // Eval sumdlogdiv_b_den Horner step: add coefficient_5
     dw 452;
+    dw 112;  // Eval sumdlogdiv_b_den Horner step: add coefficient_5
     dw 456;
-    dw 108;  // Eval sumdlogdiv_b_den Horner step: add coefficient_4
     dw 460;
+    dw 108;  // Eval sumdlogdiv_b_den Horner step: add coefficient_4
     dw 464;
-    dw 104;  // Eval sumdlogdiv_b_den Horner step: add coefficient_3
     dw 468;
+    dw 104;  // Eval sumdlogdiv_b_den Horner step: add coefficient_3
     dw 472;
-    dw 100;  // Eval sumdlogdiv_b_den Horner step: add coefficient_2
     dw 476;
+    dw 100;  // Eval sumdlogdiv_b_den Horner step: add coefficient_2
     dw 480;
-    dw 96;  // Eval sumdlogdiv_b_den Horner step: add coefficient_1
     dw 484;
+    dw 96;  // Eval sumdlogdiv_b_den Horner step: add coefficient_1
     dw 488;
-    dw 92;  // Eval sumdlogdiv_b_den Horner step: add coefficient_0
     dw 492;
+    dw 92;  // Eval sumdlogdiv_b_den Horner step: add coefficient_0
     dw 496;
-    dw 392;  // None
-    dw 504;
+    dw 500;
+    dw 396;  // None
     dw 508;
+    dw 512;
     dw 516;  // None
     dw 520;
-    dw 512;
+    dw 320;
 
     mul_offsets_ptr_loc:
     dw 40;  // Eval sumdlogdiv_a_num Horner step: multiply by xA0
@@ -1709,86 +1709,86 @@ func get_EVAL_FN_CHALLENGE_DUPL_4P_circuit(curve_id: felt) -> (circuit: ModuloCi
     dw 4;  // None
     dw 308;
     dw 312;
-    dw 40;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
-    dw 8;
-    dw 320;
-    dw 324;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
-    dw 8;
-    dw 328;
-    dw 332;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
-    dw 8;
-    dw 336;
-    dw 340;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
-    dw 8;
-    dw 344;
-    dw 64;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
-    dw 8;
-    dw 352;
-    dw 356;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
-    dw 8;
-    dw 360;
-    dw 364;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
-    dw 8;
-    dw 368;
-    dw 372;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
-    dw 8;
-    dw 376;
-    dw 380;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
-    dw 8;
-    dw 384;
-    dw 388;  // None
-    dw 392;
-    dw 348;
-    dw 88;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
-    dw 8;
-    dw 396;
-    dw 400;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
-    dw 8;
-    dw 404;
-    dw 408;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
-    dw 8;
-    dw 412;
-    dw 416;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
-    dw 8;
-    dw 420;
-    dw 424;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
-    dw 8;
-    dw 428;
-    dw 124;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 436;
-    dw 440;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 444;
-    dw 448;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 452;
-    dw 456;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 460;
-    dw 464;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 468;
-    dw 472;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 476;
-    dw 480;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 484;
-    dw 488;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
-    dw 8;
-    dw 492;
-    dw 496;  // None
-    dw 500;
-    dw 432;
-    dw 12;  // None
-    dw 500;
-    dw 504;
     dw 16;  // None
     dw 316;
-    dw 512;
-    dw 20;  // None
+    dw 320;
+    dw 40;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
+    dw 8;
+    dw 324;
+    dw 328;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
+    dw 8;
+    dw 332;
+    dw 336;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
+    dw 8;
+    dw 340;
+    dw 344;  // Eval sumdlogdiv_a_num Horner step: multiply by xA2
+    dw 8;
+    dw 348;
+    dw 64;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
+    dw 8;
+    dw 356;
+    dw 360;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
+    dw 8;
+    dw 364;
+    dw 368;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
+    dw 8;
+    dw 372;
+    dw 376;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
+    dw 8;
+    dw 380;
+    dw 384;  // Eval sumdlogdiv_a_den Horner step: multiply by xA2
+    dw 8;
+    dw 388;
+    dw 392;  // None
+    dw 396;
+    dw 352;
+    dw 88;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
+    dw 8;
+    dw 400;
+    dw 404;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
+    dw 8;
+    dw 408;
+    dw 412;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
+    dw 8;
+    dw 416;
+    dw 420;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
+    dw 8;
+    dw 424;
+    dw 428;  // Eval sumdlogdiv_b_num Horner step: multiply by xA2
+    dw 8;
+    dw 432;
+    dw 124;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 440;
+    dw 444;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 448;
+    dw 452;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 456;
+    dw 460;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 464;
+    dw 468;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 472;
+    dw 476;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 480;
+    dw 484;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 488;
+    dw 492;  // Eval sumdlogdiv_b_den Horner step: multiply by xA2
+    dw 8;
+    dw 496;
+    dw 500;  // None
+    dw 504;
+    dw 436;
+    dw 12;  // None
+    dw 504;
     dw 508;
+    dw 20;  // None
+    dw 512;
     dw 516;
 
     output_offsets_ptr_loc:
