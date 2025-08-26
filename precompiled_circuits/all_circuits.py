@@ -10,21 +10,33 @@ from garaga.precompiled_circuits.compilable_circuits.base import (
     to_snake_case,
 )
 from garaga.precompiled_circuits.compilable_circuits.common_cairo_fustat_circuits import (
+    AccumulateEvalPointChallengeSignedCircuit,
+    AccumulateFunctionChallengeDuplCircuit,
     AddECPointCircuit,
     DoubleECPointCircuit,
+    DummyCircuit,
+    EvalFunctionChallengeDuplCircuit,
+    FinalizeFunctionChallengeDuplCircuit,
+    InitFunctionChallengeDuplCircuit,
     IsOnCurveG1Circuit,
     IsOnCurveG1G2Circuit,
+    RHSFinalizeAccCircuit,
+    SlopeInterceptSamePointCircuit,
 )
 from precompiled_circuits.compilable_circuits.fustat_only import (
     AddECPointsG2Circuit,
     DecompressG1PointCircuit,
     DerivePointFromXCircuit,
     FastG2CofactorClearingCircuit,
+    FinalExpPart1Circuit,
+    FinalExpPart2Circuit,
+    FP12MulCircuit,
     IsogenyG2Circuit,
     MapToCurveG2AdjustYSign,
     MapToCurveG2ComputeInialCoordinatesQuadratic,
     MapToCurveG2ComputeInitialCoordinatesNonQuadratic,
     MapToCurveG2Part1Circuit,
+    MultiMillerLoop,
     MultiPairingCheck,
 )
 
@@ -102,25 +114,14 @@ def find_best_circuit_id_from_int(circuit_id: int) -> CircuitID:
         return best_match
 
 
-# Minimal circuits needed for the user's specific functions:
-# - add_ec_points, sub_ec_points
-# - is_on_curve_g1
-# - derive_g1_point_from_x
-# - multi_pairing_check_2P
-# - hash_to_curve
+# All the circuits that are going to be compiled to Cairo Zero.
 ALL_FUSTAT_CIRCUITS = {
-    # Core EC operations needed by add_ec_points/sub_ec_points
-    CircuitID.ADD_EC_POINT: {
-        "class": AddECPointCircuit,
+    CircuitID.DUMMY: {"class": DummyCircuit, "params": None, "filename": "dummy"},
+    CircuitID.IS_ON_CURVE_G1_G2: {
+        "class": IsOnCurveG1G2Circuit,
         "params": None,
         "filename": "ec",
     },
-    CircuitID.DOUBLE_EC_POINT: {
-        "class": DoubleECPointCircuit,
-        "params": None,
-        "filename": "ec",
-    },
-    # Curve checking circuits
     CircuitID.IS_ON_CURVE_G1: {
         "class": IsOnCurveG1Circuit,
         "params": None,
@@ -131,24 +132,86 @@ ALL_FUSTAT_CIRCUITS = {
         "params": None,
         "filename": "ec",
     },
-    CircuitID.IS_ON_CURVE_G1_G2: {
-        "class": IsOnCurveG1G2Circuit,
-        "params": None,
-        "filename": "ec",
-    },
-    # Point decompression for derive_g1_point_from_x
     CircuitID.DecompressG1Point: {
         "class": DecompressG1PointCircuit,
         "params": None,
         "filename": "ec",
     },
-    # Multi-pairing check (only 2-pair version needed)
+    CircuitID.SLOPE_INTERCEPT_SAME_POINT: {
+        "class": SlopeInterceptSamePointCircuit,
+        "params": None,
+        "filename": "ec",
+    },
+    CircuitID.ACC_EVAL_POINT_CHALLENGE_SIGNED: {
+        "class": AccumulateEvalPointChallengeSignedCircuit,
+        "params": None,
+        "filename": "ec",
+    },
+    CircuitID.RHS_FINALIZE_ACC: {
+        "class": RHSFinalizeAccCircuit,
+        "params": None,
+        "filename": "ec",
+    },
+    CircuitID.EVAL_FUNCTION_CHALLENGE_DUPL: {
+        "class": EvalFunctionChallengeDuplCircuit,
+        "params": [{"n_points": k} for k in [1, 2, 3, 4]],
+        "filename": "ec",
+    },
+    CircuitID.INIT_FUNCTION_CHALLENGE_DUPL: {
+        "class": InitFunctionChallengeDuplCircuit,
+        "params": [{"n_points": k} for k in [5]],
+        "filename": "ec",
+    },
+    CircuitID.ACC_FUNCTION_CHALLENGE_DUPL: {
+        "class": AccumulateFunctionChallengeDuplCircuit,
+        "params": None,
+        "filename": "ec",
+    },
+    CircuitID.FINALIZE_FUNCTION_CHALLENGE_DUPL: {
+        "class": FinalizeFunctionChallengeDuplCircuit,
+        "params": None,
+        "filename": "ec",
+    },
+    CircuitID.FP12_MUL: {
+        "class": FP12MulCircuit,
+        "params": None,
+        "filename": "extf_mul",
+    },
+    CircuitID.FINAL_EXP_PART_1: {
+        "class": FinalExpPart1Circuit,
+        "params": None,
+        "filename": "final_exp",
+    },
+    CircuitID.FINAL_EXP_PART_2: {
+        "class": FinalExpPart2Circuit,
+        "params": None,
+        "filename": "final_exp",
+    },
+    CircuitID.MULTI_MILLER_LOOP: {
+        "class": MultiMillerLoop,
+        "params": [{"n_pairs": k} for k in [1, 2, 3]],
+        "filename": "multi_miller_loop",
+    },
     CircuitID.MULTI_PAIRING_CHECK: {
         "class": MultiPairingCheck,
-        "params": [{"n_pairs": 2}],  # Only n_pairs=2 needed for multi_pairing_check_2P
+        "params": [{"n_pairs": k} for k in [2, 3]],
         "filename": "multi_pairing_check",
     },
-    # Hash-to-curve G2 circuits (BLS12-381 only)
+    CircuitID.ADD_EC_POINT: {
+        "class": AddECPointCircuit,
+        "params": None,
+        "filename": "ec",
+    },
+    CircuitID.DOUBLE_EC_POINT: {
+        "class": DoubleECPointCircuit,
+        "params": None,
+        "filename": "ec",
+    },
+    # CircuitID.FULL_ECIP_BATCHED: {
+    #     "class": FullECIPCircuitBatched,
+    #     "params": [{"n_points": k} for k in [1, 2]],
+    #     "filename": "ec",
+    # },
     CircuitID.MAP_TO_CURVE_G2_PART_1: {
         "class": MapToCurveG2Part1Circuit,
         "params": None,
@@ -173,16 +236,16 @@ ALL_FUSTAT_CIRCUITS = {
         "filename": "map_to_curve_g2",
         "curve_ids": [CurveID.BLS12_381],
     },
-    CircuitID.ADD_EC_POINTS_G2: {
-        "class": AddECPointsG2Circuit,
-        "params": None,
-        "filename": "ec",
-    },
     CircuitID.ISOGENY_G2: {
         "class": IsogenyG2Circuit,
         "params": None,
         "filename": "isogeny_g2",
         "curve_ids": [CurveID.BLS12_381],
+    },
+    CircuitID.ADD_EC_POINTS_G2: {
+        "class": AddECPointsG2Circuit,
+        "params": None,
+        "filename": "ec",
     },
     CircuitID.G2_COFACTOR_CLEARING: {
         "class": FastG2CofactorClearingCircuit,
