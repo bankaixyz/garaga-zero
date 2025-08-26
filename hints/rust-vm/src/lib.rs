@@ -1,3 +1,3 @@
-pub mod types;
-pub mod hints;
 pub mod error;
+pub mod hints;
+pub mod types;

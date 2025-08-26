@@ -1,9 +1,12 @@
-use cairo_vm_base::{cairo_type::CairoType, vm::cairo_vm::{
-    types::relocatable::{MaybeRelocatable, Relocatable},
-    vm::{errors::hint_errors::HintError, vm_core::VirtualMachine},
-    Felt252,
-}};
-use cairo_vm_base::types::{uint384::UInt384};
+use cairo_vm_base::{
+    cairo_type::CairoType,
+    types::uint384::UInt384,
+    vm::cairo_vm::{
+        types::relocatable::{MaybeRelocatable, Relocatable},
+        vm::{errors::hint_errors::HintError, vm_core::VirtualMachine},
+        Felt252,
+    },
+};
 use num_bigint::BigUint;
 use num_traits::{One, Zero};
 use pyo3::{types::PyList, PyAny};
@@ -53,16 +56,16 @@ impl UInt384Py {
     }
 
     pub fn to_bytes(&self) -> Vec<u8> {
-        self.0.0.to_bytes_be()
+        self.0 .0.to_bytes_be()
     }
 
     pub fn to_limbs(&self) -> [Vec<u8>; 4] {
         let mask = BigUint::from(2u128).pow(96) - BigUint::one();
 
-        let d0: BigUint = &self.0.0 & &mask;
-        let d1: BigUint = (&self.0.0 >> 96) & &mask;
-        let d2: BigUint = (&self.0.0 >> 192) & &mask;
-        let d3: BigUint = (&self.0.0 >> 288) & &mask;
+        let d0: BigUint = &self.0 .0 & &mask;
+        let d1: BigUint = (&self.0 .0 >> 96) & &mask;
+        let d2: BigUint = (&self.0 .0 >> 192) & &mask;
+        let d3: BigUint = (&self.0 .0 >> 288) & &mask;
 
         [d0.to_bytes_be(), d1.to_bytes_be(), d2.to_bytes_be(), d3.to_bytes_be()]
     }

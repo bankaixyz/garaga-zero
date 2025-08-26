@@ -1,15 +1,18 @@
 use std::collections::HashMap;
 
-use cairo_vm_base::{types::uint384::UInt384, vm::cairo_vm::{
-    hint_processor::builtin_hint_processor::{
-        builtin_hint_processor_definition::HintProcessorData,
-        hint_utils::{get_ptr_from_var_name, get_relocatable_from_var_name, insert_value_into_ap},
+use cairo_vm_base::{
+    cairo_type::CairoType,
+    types::uint384::UInt384,
+    vm::cairo_vm::{
+        hint_processor::builtin_hint_processor::{
+            builtin_hint_processor_definition::HintProcessorData,
+            hint_utils::{get_ptr_from_var_name, get_relocatable_from_var_name, insert_value_into_ap},
+        },
+        types::exec_scope::ExecutionScopes,
+        vm::{errors::hint_errors::HintError, vm_core::VirtualMachine},
+        Felt252,
     },
-    types::exec_scope::ExecutionScopes,
-    vm::{errors::hint_errors::HintError, vm_core::VirtualMachine},
-    Felt252,
-}};
-use cairo_vm_base::cairo_type::CairoType;
+};
 use num_bigint::BigUint;
 
 pub const HINT_UINT384_IS_LE: &str = r#"from garaga.hints.io import bigint_pack
@@ -253,18 +256,11 @@ pub fn hint_sum_inv_mod_p(
     let sum_val = (&x.0 + &y.0) % &p.0;
 
     let sum_inv_val = sum_val.modinv(&p.0).ok_or_else(|| {
-        HintError::CustomHint(
-            format!(
-                "Modular inverse does not exist for sum {} modulo {}",
-                sum_val, p.0
-            )
-            .into_boxed_str(),
-        )
+        HintError::CustomHint(format!("Modular inverse does not exist for sum {} modulo {}", sum_val, p.0).into_boxed_str())
     })?;
     let sum_inv = UInt384(sum_inv_val);
 
-    let sum_inv_addr =
-        get_relocatable_from_var_name("sum_inv_d0", vm, &hint_data.ids_data, &hint_data.ap_tracking)?;
+    let sum_inv_addr = get_relocatable_from_var_name("sum_inv_d0", vm, &hint_data.ids_data, &hint_data.ap_tracking)?;
 
     sum_inv.to_memory(vm, sum_inv_addr)?;
 
