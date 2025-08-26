@@ -18,6 +18,7 @@ from garaga.precompiled_circuits.compilable_circuits.common_cairo_fustat_circuit
 from precompiled_circuits.compilable_circuits.fustat_only import (
     AddECPointsG2Circuit,
     DecompressG1PointCircuit,
+    DerivePointFromXCircuit,
     FastG2CofactorClearingCircuit,
     IsogenyG2Circuit,
     MapToCurveG2AdjustYSign,
@@ -122,6 +123,11 @@ ALL_FUSTAT_CIRCUITS = {
     # Curve checking circuits
     CircuitID.IS_ON_CURVE_G1: {
         "class": IsOnCurveG1Circuit,
+        "params": None,
+        "filename": "ec",
+    },
+    CircuitID.DERIVE_POINT_FROM_X: {
+        "class": DerivePointFromXCircuit,
         "params": None,
         "filename": "ec",
     },
