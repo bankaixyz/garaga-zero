@@ -133,7 +133,7 @@ pub fn compute_mod_circuit(
             .iter()
             .map(|uint384| -> PyResult<PyObject> {
                 let bytes = uint384.0.to_bytes_be();
-                let py_int = py.eval(&format!("int.from_bytes({:?}, 'big')", bytes), None, None)?;
+                let py_int = py.eval(&format!("int.from_bytes({bytes:?}, 'big')"), None, None)?;
 
                 Ok(py_int.into())
             })
@@ -141,7 +141,7 @@ pub fn compute_mod_circuit(
             .map_err(GaragaZeroError::Python)?;
 
         let py_circuit_id = py
-            .eval(&format!("int.from_bytes({:?}, 'big')", circuit_id), None, None)
+            .eval(&format!("int.from_bytes({circuit_id:?}, 'big')"), None, None)
             .map_err(GaragaZeroError::Python)?;
         let witnesses = run_modulo_circuit_hints
             .call1((py_input, n_limbs, base, py_circuit_id, curve_id))
@@ -194,7 +194,7 @@ pub fn compute_extension_field_mod_circuit(
             .iter()
             .map(|uint384| -> PyResult<PyObject> {
                 let bytes = uint384.0.to_bytes_be();
-                let py_int = py.eval(&format!("int.from_bytes({:?}, 'big')", bytes), None, None)?;
+                let py_int = py.eval(&format!("int.from_bytes({bytes:?}, 'big')"), None, None)?;
 
                 Ok(py_int.into())
             })
@@ -202,7 +202,7 @@ pub fn compute_extension_field_mod_circuit(
             .map_err(GaragaZeroError::Python)?;
 
         let py_circuit_id = py
-            .eval(&format!("int.from_bytes({:?}, 'big')", circuit_id), None, None)
+            .eval(&format!("int.from_bytes({circuit_id:?}, 'big')"), None, None)
             .map_err(GaragaZeroError::Python)?;
         let result = run_circuit_hints
             .call1((py_input, n_limbs, base, py_circuit_id, curve_id))

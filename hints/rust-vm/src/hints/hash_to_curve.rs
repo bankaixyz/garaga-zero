@@ -57,7 +57,7 @@ pub fn hint_map_to_curve_g2(
             is_quadratic_residue_bls12_381(&g1xx.0, &g1xy.0)?
         }
         // Add other curves as needed
-        _ => return Err(GaragaZeroError::Custom(format!("Unknown curve_id: {}", curve_id).into()).into()),
+        _ => return Err(GaragaZeroError::Custom(format!("Unknown curve_id: {curve_id}").into()).into()),
     };
 
     // Set the result in the VM
@@ -75,10 +75,10 @@ fn is_quadratic_residue_bls12_381(real: &BigUint, imaginary: &BigUint) -> Result
     let imag_str = imaginary.to_str_radix(10);
 
     let real_fq = Bls12_381Fq::from_str(&real_str)
-        .map_err(|_| GaragaZeroError::Custom(format!("Failed to convert real part to Fq: {}", real_str).into()))?;
+        .map_err(|_| GaragaZeroError::Custom(format!("Failed to convert real part to Fq: {real_str}").into()))?;
 
     let imag_fq = Bls12_381Fq::from_str(&imag_str)
-        .map_err(|_| GaragaZeroError::Custom(format!("Failed to convert imaginary part to Fq: {}", imag_str).into()))?;
+        .map_err(|_| GaragaZeroError::Custom(format!("Failed to convert imaginary part to Fq: {imag_str}").into()))?;
 
     // Create an Fq2 element
     let element = Bls12_381Fq2::new(real_fq, imag_fq);

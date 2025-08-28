@@ -29,8 +29,8 @@ pub fn print_address_range(vm: &VirtualMachine, address: Relocatable, depth: usi
             offset: i,
         };
         match vm.get_maybe(&addr) {
-            Some(value) => println!("Offset {}: {:?}", i, value),
-            None => println!("Offset {}: <empty>", i),
+            Some(value) => println!("Offset {i}: {value:?}"),
+            None => println!("Offset {i}: <empty>"),
         }
     }
     println!("----------------------------------------\n");
