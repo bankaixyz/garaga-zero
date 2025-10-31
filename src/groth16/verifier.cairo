@@ -11,7 +11,6 @@ from bn254.multi_pairing_1 import multi_pairing_1P as bn_multi_pairing_1P
 from bls12_381.multi_pairing_3 import multi_pairing_3P as bls_multi_pairing_3P
 from bls12_381.multi_pairing_1 import multi_pairing_1P as bls_multi_pairing_1P
 
-
 func negate_g1{
     range_check_ptr, range_check96_ptr: felt*, add_mod_ptr: ModBuiltin*, mul_mod_ptr: ModBuiltin*
 }(curve_id: felt, p: G1Point) -> (res: G1Point) {
@@ -49,7 +48,11 @@ func assert_eq_E12D_modp{
 }
 
 func pairing_3P_select{
-    range_check_ptr, poseidon_ptr: PoseidonBuiltin*, range_check96_ptr: felt*, add_mod_ptr: ModBuiltin*, mul_mod_ptr: ModBuiltin*
+    range_check_ptr,
+    poseidon_ptr: PoseidonBuiltin*,
+    range_check96_ptr: felt*,
+    add_mod_ptr: ModBuiltin*,
+    mul_mod_ptr: ModBuiltin*,
 }(curve_id: felt, pairs: G1G2Pair*) -> (res: E12D) {
     if (curve_id == bn.CURVE_ID) {
         let (r) = bn_multi_pairing_3P(pairs);
@@ -61,7 +64,11 @@ func pairing_3P_select{
 }
 
 func pairing_1P_select{
-    range_check_ptr, poseidon_ptr: PoseidonBuiltin*, range_check96_ptr: felt*, add_mod_ptr: ModBuiltin*, mul_mod_ptr: ModBuiltin*
+    range_check_ptr,
+    poseidon_ptr: PoseidonBuiltin*,
+    range_check96_ptr: felt*,
+    add_mod_ptr: ModBuiltin*,
+    mul_mod_ptr: ModBuiltin*,
 }(curve_id: felt, pairs: G1G2Pair*) -> (res: E12D) {
     if (curve_id == bn.CURVE_ID) {
         let (r) = bn_multi_pairing_1P(pairs);
@@ -114,5 +121,3 @@ func verify_groth16_generic{
     assert_eq_E12D_modp(curve_id, F_total, F_ab_inv);
     return (ok=1);
 }
-
-
