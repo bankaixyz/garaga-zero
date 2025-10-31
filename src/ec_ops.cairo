@@ -518,7 +518,7 @@ func msm{
         from garaga.hints.ecip import zk_ecip_hint
         from garaga.hints.io import pack_bigint_ptr, pack_felt_ptr, fill_sum_dlog_div, fill_g1_point
         from garaga.hints.neg_3 import construct_digit_vectors
-        from garaga.definitions import G1Point
+        from garaga.definitions import G1Point, CurveID
         import time
         curve_id = CurveID(ids.curve_id)
         points = pack_bigint_ptr(memory, ids.points._reference_value, ids.N_LIMBS, ids.BASE, 2*ids.n)
