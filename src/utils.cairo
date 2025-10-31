@@ -1,5 +1,5 @@
 from starkware.cairo.common.alloc import alloc
-from starkware.cairo.common.cairo_builtins import PoseidonBuiltin
+from starkware.cairo.common.cairo_builtins import PoseidonBuiltin, BitwiseBuiltin
 from starkware.cairo.common.poseidon_state import PoseidonBuiltinState
 from starkware.cairo.common.uint256 import Uint256
 from definitions import STARK_MIN_ONE_D2, N_LIMBS, BASE, bls, UInt384, get_min_one
@@ -1425,6 +1425,28 @@ func felt_divmod{range_check_ptr}(value, div) -> (q: felt, r: felt) {
 
     assert value = q * div + r;
     return (q, r);
+}
+
+// Computes x//y and x%y.
+// Assumption: y must be a power of 2
+// params:
+//   x: the dividend.
+//   y: the divisor.
+// returns:
+//   q: the quotient.
+//   r: the remainder.
+func bitwise_divmod{bitwise_ptr: BitwiseBuiltin*}(x: felt, y: felt) -> (q: felt, r: felt) {
+    if (y == 1) {
+        let bitwise_ptr = bitwise_ptr;
+        return (q=x, r=0);
+    } else {
+        assert bitwise_ptr.x = x;
+        assert bitwise_ptr.y = y - 1;
+        let x_and_y = bitwise_ptr.x_and_y;
+
+        let bitwise_ptr = bitwise_ptr + BitwiseBuiltin.SIZE;
+        return (q=(x - x_and_y) / y, r=x_and_y);
+    }
 }
 
 // Utility to get a pointer on an array of 2^i from i = 0 to 128.
